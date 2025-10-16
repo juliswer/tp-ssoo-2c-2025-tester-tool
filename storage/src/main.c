@@ -65,9 +65,6 @@ int main(int argc, char *argv[])
                 printf("Ingrese el tag: ");
                 scanf("%s", tag);
 
-                strcat(file, "\n");
-                strcat(tag, "\n");
-
                 agregar_a_paquete(paquete, file, strlen(file) + 1);
                 agregar_a_paquete(paquete, tag, strlen(tag) + 1);
 
@@ -84,9 +81,6 @@ int main(int argc, char *argv[])
                 scanf("%s", tag);
                 printf("Ingrese el tamaño: ");
                 scanf("%u", &tamanio);
-
-                strcat(file, "\n");
-                strcat(tag, "\n");
 
                 agregar_a_paquete(paquete, file, strlen(file) + 1);
                 agregar_a_paquete(paquete, tag, strlen(tag) + 1);
@@ -105,9 +99,6 @@ int main(int argc, char *argv[])
                 scanf("%s", tag);
                 printf("Ingrese el número de bloque lógico: ");
                 scanf("%d", &numero_bloque_logico);
-
-                strcat(file, "\n");
-                strcat(tag, "\n");
 
                 agregar_a_paquete(paquete, file, strlen(file) + 1);
                 agregar_a_paquete(paquete, tag, strlen(tag) + 1);
@@ -128,16 +119,10 @@ int main(int argc, char *argv[])
                 printf("Ingrese el tag destino: ");
                 scanf("%s", tag_destino);
 
-                strcat(file_origen, "\n");
-                strcat(tag_origen, "\n");
-                strcat(file_destino, "\n");
-                strcat(tag_destino, "\n");
-
                 agregar_a_paquete(paquete, file_origen, strlen(file_origen) + 1);
                 agregar_a_paquete(paquete, tag_origen, strlen(tag_origen) + 1);
                 agregar_a_paquete(paquete, file_destino, strlen(file_destino) + 1);
                 agregar_a_paquete(paquete, tag_destino, strlen(tag_destino) + 1);
-
                 log_info(logger, "TAG - Origen: %s:%s, Destino: %s:%s", file_origen, tag_origen, file_destino, tag_destino);
                 break;
             }
@@ -148,9 +133,6 @@ int main(int argc, char *argv[])
                 scanf("%s", file);
                 printf("Ingrese el tag: ");
                 scanf("%s", tag);
-
-                strcat(file, "\n");
-                strcat(tag, "\n");
 
                 agregar_a_paquete(paquete, file, strlen(file) + 1);
                 agregar_a_paquete(paquete, tag, strlen(tag) + 1);
@@ -165,9 +147,6 @@ int main(int argc, char *argv[])
                 scanf("%s", file);
                 printf("Ingrese el tag: ");
                 scanf("%s", tag);
-
-                strcat(file, "\n");
-                strcat(tag, "\n");
 
                 agregar_a_paquete(paquete, file, strlen(file) + 1);
                 agregar_a_paquete(paquete, tag, strlen(tag) + 1);
