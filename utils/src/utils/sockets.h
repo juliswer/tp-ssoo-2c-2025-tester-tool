@@ -69,9 +69,9 @@ typedef enum
 	PAGE_COPY,
 	TAG,
 	COMMIT,
-	FLUSH,
 	DELETE,
-	READ
+	READ,
+	ESCRIBIR_BLOQUE
 } op_code_worker_storage;
 
 typedef struct

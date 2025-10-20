@@ -156,6 +156,7 @@ int main(int argc, char *argv[])
             }
             case ESCRIBIR_BLOQUE:
             {
+                int block_size = 1024;
                 int id_bloque_logico = 0;
                 char file[256], tag[256], contenido[256];
                 printf("Ingrese el nombre del archivo: ");
@@ -166,13 +167,26 @@ int main(int argc, char *argv[])
                 scanf("%d", &id_bloque_logico);
                 printf("Ingrese el contenido: ");
                 scanf("%s", contenido);
+                printf("Ingrese el tamanio de bloque a utilizar: ");
+                scanf("%d", &block_size);
+
+                if (strlen(contenido) >= block_size)
+                {
+                    printf("Error: El contenido es más grande que el tamaño del bloque.\n");
+                    break;
+                }
+
+                void *buffer_bloque = malloc(block_size);
+                memset(buffer_bloque, 0, block_size);
+                memcpy(buffer_bloque, contenido, strlen(contenido));
 
                 agregar_a_paquete(paquete, file, strlen(file) + 1);
                 agregar_a_paquete(paquete, tag, strlen(tag) + 1);
                 agregar_a_paquete(paquete, &id_bloque_logico, sizeof(int));
-                agregar_a_paquete(paquete, contenido, strlen(contenido) + 1);
+                agregar_a_paquete(paquete, buffer_bloque, block_size);
 
                 log_info(logger, "WRITE - Archivo: %s, Tag: %s, Contenido: %s", file, tag, contenido);
+                free(buffer_bloque);
                 break;
             }
             default:
