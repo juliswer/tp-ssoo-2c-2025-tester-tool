@@ -45,9 +45,9 @@ int main(int argc, char *argv[])
             log_warning(logger, "❌ 27 - PAGE_COPY");
             log_warning(logger, "✅ 28 - TAG");
             log_warning(logger, "✅ 29 - COMMIT");
-            log_warning(logger, "✅ 30 - FLUSH");
-            log_warning(logger, "✅ 31 - DELETE");
-            log_warning(logger, "✅ 32 - READ");
+            log_warning(logger, "✅ 30 - DELETE");
+            log_warning(logger, "✅ 31 - READ");
+            log_warning(logger, "✅ 32 - WRITE");
 
             int opcion;
             printf("Ingrese el número de operación: ");
@@ -152,6 +152,27 @@ int main(int argc, char *argv[])
                 agregar_a_paquete(paquete, tag, strlen(tag) + 1);
 
                 log_info(logger, "DELETE - Archivo: %s, Tag: %s", file, tag);
+                break;
+            }
+            case ESCRIBIR_BLOQUE:
+            {
+                int id_bloque_logico = 0;
+                char file[256], tag[256], contenido[256];
+                printf("Ingrese el nombre del archivo: ");
+                scanf("%s", file);
+                printf("Ingrese el tag: ");
+                scanf("%s", tag);
+                printf("Ingrese el ID de bloque lógico: ");
+                scanf("%d", &id_bloque_logico);
+                printf("Ingrese el contenido: ");
+                scanf("%s", contenido);
+
+                agregar_a_paquete(paquete, file, strlen(file) + 1);
+                agregar_a_paquete(paquete, tag, strlen(tag) + 1);
+                agregar_a_paquete(paquete, &id_bloque_logico, sizeof(int));
+                agregar_a_paquete(paquete, contenido, strlen(contenido) + 1);
+
+                log_info(logger, "WRITE - Archivo: %s, Tag: %s, Contenido: %s", file, tag, contenido);
                 break;
             }
             default:
