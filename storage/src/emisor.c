@@ -1,7 +1,7 @@
 #include "emisor.h"
 #include <commons/log.h>
 
-t_paquete *handle_emisor(t_log *logger, int worker_id, int operaciones_count)
+t_paquete *handle_emisor(t_log *logger, int worker_id, uint32_t query_id, int operaciones_count)
 {
     t_paquete *paquete = crear_paquete();
 
@@ -34,6 +34,7 @@ t_paquete *handle_emisor(t_log *logger, int worker_id, int operaciones_count)
         scanf("%d", &opcion);
 
         paquete->codigo_operacion = opcion;
+        agregar_a_paquete(paquete, &query_id, sizeof(int));
 
         switch (opcion)
         {

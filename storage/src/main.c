@@ -17,11 +17,15 @@ int main(int argc, char *argv[])
     printf("Ingrese el número de un worker: ");
     scanf("%d", &worker_id);
 
+    uint32_t query_id;
+    printf("Ingrese el número de un query: ");
+    scanf("%d", &query_id);
+
     int operaciones_count = 0;
 
     while (1)
     {
-        t_paquete *paquete = handle_emisor(logger, worker_id, operaciones_count);
+        t_paquete *paquete = handle_emisor(logger, worker_id, query_id, operaciones_count);
 
         enviar_paquete(paquete, storage_fd);
         eliminar_paquete(paquete);
